@@ -1,0 +1,103 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Comic Sans MS', Arial, verdana; 
+    background-color: #f5f5f5;
+}
+
+.container {
+    width: 90%; /* Aumenta el ancho del contenedor */
+    max-width: 1200px;
+    text-align: center;
+    border: 1px solid #00796b; 
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 8px; 
+    background-color: white;
+}
+textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    text-align: left;
+    border: 1px solid #00796b;
+    padding: 10px;
+    box-sizing: border-box;
+    resize: both; 
+    border-radius: 4px; 
+}
+input[type="submit"], input[type="button"] {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: 1px solid #00796b;
+    border-radius: 4px; 
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);  
+}
+
+input[type="submit"]:hover, input[type="button"]:hover {
+    background-color: #45a049;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+h2 {
+    font-family: 'Courier', verdana, sans-serif;
+}
+.tables-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.tokens-textarea, .line-info-table {
+    width: 100%; /* Ajusta el ancho para que las tablas ocupen el espacio disponible */
+    height: 200px;
+    border: 1px solid #00796b;
+    border-radius: 4px;
+}
+
+.line-info-table {
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: white;
+    overflow-y: auto;
+}
+
+.line-info-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.line-info-table th, .line-info-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.line-info-table th {
+    background-color: #f2f2f2;
+    text-align: left;
+}
+
+.sintactico-table {
+    margin-top: 20px;
+    width: 100%; /* Hace que la tabla ocupe todo el ancho */
+    border-collapse: collapse;
+}
+
+.sintactico-table th, .sintactico-table td {
+    border: 1px solid #ddd;
+    padding: 10px; /* Aumenta el padding para más espacio */
+    text-align: left;
+}
+
+.sintactico-table th {
+    background-color: #f2f2f2;
+}

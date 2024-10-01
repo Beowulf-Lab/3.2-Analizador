@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi primer analizador web</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Analizador Léxico y Sintáctico</h1>
+
+        <!-- Mensaje de error si hay errores en el análisis sintáctico -->
+        {% if error_message %}
+        <div class="error-message" style="color: red;">
+            <strong>Error:</strong> {{ error_message }}
+        </div>
+        <br>
+        {% endif %}
+
+        <!-- Formulario para ingresar el código -->
+        <form method="post" aria-label="Formulario de análisis">
+            <label for="codigo">Escribe tu código:</label>
+            <textarea id="codigo" name="text" rows="10" cols="50" placeholder="Escribe tu código aquí..." required>{{ text }}</textarea>
+            <br><br>
+            <input type="submit" value="Analizar">
+            <input type="button" value="Borrar" onclick="clearTextarea()">
+        </form>
+        <br><br>
+
+        <!-- Sección de análisis léxico -->
+        <section>
+            <h2>Analizador Léxico</h2>
+            <div class="tables-container">
+                {% if line_info %}
+                <div class="line-info-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Línea</th>
+                                <th>Tipo</th>
+                                <th>Valor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for line, tipo, valor in line_info %}
+                            <tr>
+                                <td>{{ line }}</td>
+                                <td>{{ tipo }}</td>
+                                <td>{{ valor }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% endif %}
+            </div>
+        </section>
+        <br><br>
+
+        <!-- Sección de análisis sintáctico -->
+        <section>
+            <h2>Analizador Sintáctico</h2>
+            {% if sintactico_info %}
+            <table class="sintactico-table">
+                <thead>
+                    <tr>
+                        <th>Línea</th>
+                        <th>Resultado</th> <!-- Resultado en la columna central -->
+                        <th>Detalles</th> <!-- Tipo de estructura o detalles de la estructura -->
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for sintactico in sintactico_info %}
+                    <tr>
+                        <td>{{ sintactico[0] }}</td> <!-- Número de línea -->
+                        <td>{{ sintactico[1] }}</td> <!-- Resultado (Correcto o Error) -->
+                        <td>{{ sintactico[2] }}</td> <!-- Detalles o estructura del análisis -->
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% endif %}
+        </section>
+    </div>
+
+    <script>
+        function clearTextarea() {
+            document.querySelector('textarea[name="text"]').value = '';
+        }
+    </script>
+</body>
+</html>
